@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title id="page-title">Currency Exchange Rate Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1 id="dashboard-title">Currency Exchange Rate Dashboard</h1>
+    </header>
+    <main>
+        <div class="currency-selection">
+            <label for="currency1">Currency One:</label>
+            <select id="currency1">
+                <option value="DZD">Algerian dinar (DZD)</option>
+                <option value="AUD">Australian dollar (AUD)</option>
+                <option value="BHD">Bahrain dinar (BHD)</option>
+                <option value="VEF">Bolivar Fuerte (VEF)</option>
+                <option value="BWP">Botswana pula (BWP)</option>
+                <option value="BRL">Brazilian real (BRL)</option>
+                <option value="BND">Brunei dollar (BND)</option>
+                <option value="CAD">Canadian dollar (CAD)</option>
+                <option value="CLP">Chilean peso (CLP)</option>
+                <option value="CNY">Chinese yuan (CNY)</option>
+                <option value="COP">Colombian peso (COP)</option>
+                <option value="CZK">Czech koruna (CZK)</option>
+                <option value="DKK">Danish krone (DKK)</option>
+                <option value="EUR">Euro (EUR)</option>
+                <option value="HUF">Hungarian forint (HUF)</option>
+                <option value="ISK">Icelandic krona (ISK)</option>
+                <option value="INR">Indian rupee (INR)</option>
+                <option value="IDR">Indonesian rupiah (IDR)</option>
+                <option value="IRR">Iranian rial (IRR)</option>
+                <option value="ILS">Israeli New Shekel (ILS)</option>
+                <option value="JPY">Japanese yen (JPY)</option>
+                <option value="KZT">Kazakhstani tenge (KZT)</option>
+                <option value="KRW">Korean won (KRW)</option>
+                <option value="KWD">Kuwaiti dinar (KWD)</option>
+                <option value="LYD">Libyan dinar (LYD)</option>
+                <option value="MYR">Malaysian ringgit (MYR)</option>
+                <option value="MUR">Mauritian rupee (MUR)</option>
+                <option value="MXN">Mexican peso (MXN)</option>
+                <option value="NPR">Nepalese rupee (NPR)</option>
+                <option value="NZD">New Zealand dollar (NZD)</option>
+                <option value="NOK">Norwegian krone (NOK)</option>
+                <option value="OMR">Omani rial (OMR)</option>
+                <option value="PKR">Pakistani rupee (PKR)</option>
+                <option value="PEN">Peruvian sol (PEN)</option>
+                <option value="PHP">Philippine peso (PHP)</option>
+                <option value="PLN">Polish zloty (PLN)</option>
+                <option value="QAR">Qatari riyal (QAR)</option>
+                <option value="RUB">Russian ruble (RUB)</option>
+                <option value="SAR">Saudi Arabian riyal (SAR)</option>
+                <option value="SGD">Singapore dollar (SGD)</option>
+                <option value="ZAR">South African rand (ZAR)</option>
+                <option value="LKR">Sri Lankan rupee (LKR)</option>
+                <option value="SEK">Swedish krona (SEK)</option>
+                <option value="CHF">Swiss franc (CHF)</option>
+                <option value="THB">Thai baht (THB)</option>
+                <option value="TTD">Trinidadian dollar (TTD)</option>
+                <option value="TND">Tunisian dinar (TND)</option>
+                <option value="AED">U.A.E. dirham (AED)</option>
+                <option value="GBP">U.K. pound (GBP)</option>
+                <option value="USD">U.S. dollar (USD)</option>
+                <option value="UYU">Uruguayan peso (UYU)</option>
+            </select>
+
+            <label for="currency2">Currency Two:</label>
+            <select id="currency2">
+                <option value="DZD">Algerian dinar (DZD)</option>
+                <option value="AUD">Australian dollar (AUD)</option>
+                <option value="BHD">Bahrain dinar (BHD)</option>
+                <option value="VEF">Bolivar Fuerte (VEF)</option>
+                <option value="BWP">Botswana pula (BWP)</option>
+                <option value="BRL">Brazilian real (BRL)</option>
+                <option value="BND">Brunei dollar (BND)</option>
+                <option value="CAD">Canadian dollar (CAD)</option>
+                <option value="CLP">Chilean peso (CLP)</option>
+                <option value="CNY">Chinese yuan (CNY)</option>
+                <option value="COP">Colombian peso (COP)</option>
+                <option value="CZK">Czech koruna (CZK)</option>
+                <option value="DKK">Danish krone (DKK)</option>
+                <option value="EUR">Euro (EUR)</option>
+                <option value="HUF">Hungarian forint (HUF)</option>
+                <option value="ISK">Icelandic krona (ISK)</option>
+                <option value="INR">Indian rupee (INR)</option>
+                <option value="IDR">Indonesian rupiah (IDR)</option>
+                <option value="IRR">Iranian rial (IRR)</option>
+                <option value="ILS">Israeli New Shekel (ILS)</option>
+                <option value="JPY">Japanese yen (JPY)</option>
+                <option value="KZT">Kazakhstani tenge (KZT)</option>
+                <option value="KRW">Korean won (KRW)</option>
+                <option value="KWD">Kuwaiti dinar (KWD)</option>
+                <option value="LYD">Libyan dinar (LYD)</option>
+                <option value="MYR">Malaysian ringgit (MYR)</option>
+                <option value="MUR">Mauritian rupee (MUR)</option>
+                <option value="MXN">Mexican peso (MXN)</option>
+                <option value="NPR">Nepalese rupee (NPR)</option>
+                <option value="NZD">New Zealand dollar (NZD)</option>
+                <option value="NOK">Norwegian krone (NOK)</option>
+                <option value="OMR">Omani rial (OMR)</option>
+                <option value="PKR">Pakistani rupee (PKR)</option>
+                <option value="PEN">Peruvian sol (PEN)</option>
+                <option value="PHP">Philippine peso (PHP)</option>
+                <option value="PLN">Polish zloty (PLN)</option>
+                <option value="QAR">Qatari riyal (QAR)</option>
+                <option value="RUB">Russian ruble (RUB)</option>
+                <option value="SAR">Saudi Arabian riyal (SAR)</option>
+                <option value="SGD">Singapore dollar (SGD)</option>
+                <option value="ZAR">South African rand (ZAR)</option>
+                <option value="LKR">Sri Lankan rupee (LKR)</option>
+                <option value="SEK">Swedish krona (SEK)</option>
+                <option value="CHF">Swiss franc (CHF)</option>
+                <option value="THB">Thai baht (THB)</option>
+                <option value="TTD">Trinidadian dollar (TTD)</option>
+                <option value="TND">Tunisian dinar (TND)</option>
+                <option value="AED">U.A.E. dirham (AED)</option>
+                <option value="GBP">U.K. pound (GBP)</option>
+                <option value="USD">U.S. dollar (USD)</option>
+                <option value="UYU">Uruguayan peso (UYU)</option>
+            </select>
+
+            <label for="duration">Duration:</label>
+            <select id="duration">
+                <option value="monthly">Monthly</option>
+                <option value="quarterly">Quarterly</option>
+            </select>
+
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" required>
+
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" required>
+
+            <button id="fetch-data">Fetch Data</button>
+        </div>
+
+        <canvas id="exchangeRateChart"></canvas>
+        <div id="info"></div>
+    </main>
+
+    
+    <script src="/static/js/scripts.js"></script></body>
+</html>
